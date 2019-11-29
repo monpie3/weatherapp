@@ -1,0 +1,49 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color: white;
+    background-image: url("./static/photo/default.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.search-container input[type=text] { 
+    width: 80%;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+  
+.search-container input[type=text]:focus {
+    width: 100%;
+}
+
+.search-container {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        box-shadow: 1px 1px 2px black;
+        z-index: 5;
+}
+
+.tt-menu {
+    background-color: white;
+    width: 100%;
+}
+
+.weather-container {
+    margin-top: 40px;
+    color: white;
+}
