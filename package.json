@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "script.js",
   "dependencies": {
+    "aws-sdk": "^2.580.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "moment": "^2.24.0"
@@ -13,7 +14,7 @@
     "webpack-cli": "^3.3.10"
   },
   "scripts": {
-    "start": "web: AZURE_MAPS_KEY=$AZURE_MAPS_KEY node server.js",
+    "start": "node server.js",
     "heroku-postbuild": "webpack -p",
     "dev": "webpack --mode=development --watch",
     "build": "webpack --mode=production"
