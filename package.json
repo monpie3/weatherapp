@@ -12,7 +12,7 @@
     "webpack-cli": "^3.3.10"
   },
   "scripts": {
-    "start": "index.html",
+    "start": "node src/script.js",
     "dev": "webpack --mode=development --watch",
     "build": "webpack --mode=production"
   },
