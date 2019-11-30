@@ -17,19 +17,22 @@ var azure_maps_typeahead = new Bloodhound({
         wildcard: '%QUERY',
         filter: function (response) {
             var locations = [];
+            //console.log(locations);
             $(response.results).each(function (index) {
-            if (!!$(this)[0].address.municipality){
-                locations.push({
-                    display: [$(this)[0].address.municipality, $(this)[0].address.countrySubdivision, $(this)[0].address.country].join(", "),
-                    city: $(this)[0].address.municipality,
-                    country: $(this)[0].address.country,
-                });
-            }
+                if (!!$(this)[0].address.municipality){
+                    locations.push({
+                        display: [$(this)[0].address.municipality, $(this)[0].address.countrySubdivision, $(this)[0].address.country].join(", "),
+                        city: $(this)[0].address.municipality,
+                        country: $(this)[0].address.country,
+                    });
+                }
             });
+            
             return locations;//response.countries;
         }
     }
 });
+
 
 $('#remote .typeahead').typeahead(
     {
@@ -39,14 +42,17 @@ $('#remote .typeahead').typeahead(
         name: 'azure-maps-typeahead',
         display: 'display',
         source: azure_maps_typeahead
-    }
-);
 
-const unit = 'metric'; // for Celsius
+    }) .on('keyup', this, function (event) {
+            if (event.keyCode == 13) {  // Number 13 is the "Enter" key on the keyboard
+                document.getElementById("search-submit").click();
+            }
+        });
 
 
-const searchWeather = async searchCity =>
-        await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appId=${open_weather_key}&units=${unit}&lang=pl`)
+const units = 'metric';
+const searchWeather = async cityName =>
+        await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appId=${open_weather_key}&units=${units}&lang=pl`)
             .then(result => result.json())
             .then(result => init(result))
             .catch(err => {
@@ -59,8 +65,22 @@ const searchWeather = async searchCity =>
 document.getElementById('search-submit').addEventListener('click', () => {
     let searchCity = document.getElementById('search-input').value;
     if(searchCity){
-            document.getElementById('city-name').innerHTML = searchCity.split(",")[0];
-            searchWeather(searchCity);
+            let cityName = searchCity.split(",")[0];
+            let country = searchCity.split(",")[2];
+            let toSearch = '';
+            cityName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
+            if(country) {
+                toSearch = [cityName ,country].join(", ");
+                country= country.charAt(0).toUpperCase() + country.slice(1);
+                document.getElementById('city-name').innerHTML =  `${cityName}, ${country}`; 
+            }
+            else {
+                toSearch = cityName;
+                document.getElementById('city-name').innerHTML = cityName; 
+            }
+            
+            searchWeather(toSearch);
+            
         }
     })
 
@@ -91,7 +111,7 @@ const init = resultFromOpenWeatherMap => {
     }
     document.getElementById('description-additional').style.display = 'none';
     document.querySelector('.weather-description').style.visibility = 'visible';
-    console.log(resultFromOpenWeatherMap)
+    //console.log(resultFromOpenWeatherMap)
     let weatherProperty =  resultFromOpenWeatherMap.weather[0];
     let weather = resultFromOpenWeatherMap.main;
     let temp = document.getElementById('temp');

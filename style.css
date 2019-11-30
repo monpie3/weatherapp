@@ -22,8 +22,8 @@ body {
 
 .search-container input[type=text] { 
     width: 80%;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
+    -webkit-transition: width 0.2s ease-in-out;
+    transition: width 0.2s ease-in-out;
 }
   
 .search-container input[type=text]:focus {
@@ -41,6 +41,10 @@ body {
 .tt-menu {
     background-color: white;
     width: 100%;
+}
+
+.tt-suggestion:hover {
+    background-color: lightblue;
 }
 
 .weather-container {

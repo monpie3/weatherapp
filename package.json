@@ -12,6 +12,7 @@
     "webpack-cli": "^3.3.10"
   },
   "scripts": {
+    "start": "./dist/bundle.js",
     "dev": "webpack --mode=development --watch",
     "build": "webpack --mode=production"
   },
