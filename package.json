@@ -1,7 +1,7 @@
 {
   "name": "2projekt",
   "version": "1.0.0",
-  "main": "script.js",
+  "main": "./src/script.js",
   "dependencies": {
     "aws-sdk": "^2.580.0",
     "dotenv": "^8.2.0",

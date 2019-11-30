@@ -8,6 +8,8 @@ module.exports = {
         filename: "bundle.js"
     },
     plugins: [
-        new Dotenv()
-      ]
+        new Dotenv({
+            path: path.resolve(__dirname, './.env'),
+        }),
+    ]
 }
