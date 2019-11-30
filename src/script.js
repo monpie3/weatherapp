@@ -1,5 +1,12 @@
 const moment = require('moment');
 //require('dotenv').config();
+// let s3 = new aws.S3({
+//     azure_maps_key: process.env.AZURE_MAPS_KEY,
+//     open_weather_key: process.env.OPEN_WEATHER_KEY
+//   });
+
+// const azure_maps_key = s3.config.azure_maps_key || AZURE_MAPS_KEY;
+// const open_weather_key = s3.config.open_weather_key || OPEN_WEATHER_KEY;
 
 // Replace the subscriptionKey string value with your valid subscription key in .env. or herokuapp
 const azure_maps_key = process.env.AZURE_MAPS_KEY;
@@ -13,7 +20,7 @@ var azure_maps_typeahead = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     remote: {
-        url: 'https://atlas.microsoft.com/search/address/json?subscription-key=' + azure_maps_key + '&language=pl-PL' + '&api-version=1.0&query=%QUERY',
+        url: 'https://atlas.microsoft.com/search/address/json?subscription-key=' + process.env.AZURE_MAPS_KEY + '&language=pl-PL' + '&api-version=1.0&query=%QUERY',
         wildcard: '%QUERY',
         filter: function (response) {
             var locations = [];
