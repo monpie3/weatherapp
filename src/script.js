@@ -4,7 +4,6 @@ const moment = require('moment');
 const azure_maps_key = process.env.AZURE_MAPS_KEY;
 const open_weather_key = process.env.OPEN_WEATHER_KEY;
 
-
 moment.locale('pl');
 var myDate = moment().format('LL');
 console.log(myDate)
@@ -42,7 +41,6 @@ $('#remote .typeahead').typeahead(
         name: 'azure-maps-typeahead',
         display: 'display',
         source: azure_maps_typeahead
-
     }) .on('keyup', this, function (event) {
             if (event.keyCode == 13) {  // Number 13 is the "Enter" key on the keyboard
                 document.getElementById("search-submit").click();
@@ -80,7 +78,6 @@ document.getElementById('search-submit').addEventListener('click', () => {
             }
             
             searchWeather(toSearch);
-            
         }
     })
 
