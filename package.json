@@ -12,10 +12,11 @@
     "webpack-cli": "^3.3.10"
   },
   "scripts": {
-    "start": "./dist/bundle.js",
+    "start": "node src/script.js",
     "dev": "webpack --mode=development --watch",
     "build": "webpack --mode=production"
   },
+  "heroku-run-build-script": true,
   "keywords": [],
   "author": "",
   "license": "ISC",
