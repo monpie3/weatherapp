@@ -46,7 +46,7 @@ const unit = 'metric'; // for Celsius
 
 
 const searchWeather = async searchCity =>
-        await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appId=${open_weather_key}&units=${unit}`)
+        await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appId=${open_weather_key}&units=${unit}&lang=pl`)
             .then(result => result.json())
             .then(result => init(result))
             .catch(err => {
@@ -67,7 +67,7 @@ document.getElementById('search-submit').addEventListener('click', () => {
 const init = resultFromOpenWeatherMap => {
     switch(resultFromOpenWeatherMap.weather[0].main) {
         case 'Clear':
-            document.body.style.backgroundImage = 'url("./static/photo/cloud.jpg")';
+            document.body.style.backgroundImage = 'url("./static/photo/clear.jpg")';
             break;
         case 'Clouds':
             document.body.style.backgroundImage = 'url("./static/photo/cloud.jpg")';
@@ -77,13 +77,13 @@ const init = resultFromOpenWeatherMap => {
             document.body.style.backgroundImage = 'url("./static/photo/rain.jpg")';
             break;
         case 'Thunderstorm':
-            document.body.style.backgroundImage = 'url("./static/photo/cloud.jpg")';
+            document.body.style.backgroundImage = 'url("./static/photo/thunder.jpg")';
             break;                      
         case 'Snow':
             document.body.style.backgroundImage = 'url("./static/photo/snow.jpg")';
             break;
         case 'Mist':
-            document.body.style.backgroundImage = 'url("./static/photo/cloud.jpg")';
+            document.body.style.backgroundImage = 'url("./static/photo/mist.png")';
             break;
         default:
             document.body.style.backgroundImage = 'url("./static/photo/default.jpg")';
@@ -107,7 +107,7 @@ const init = resultFromOpenWeatherMap => {
     temp.innerHTML = Math.floor(weather.temp) + '&#176';
     tempMin.innerHTML = Math.floor(weather.temp_min) + '&#176';
     tempMax.innerHTML = Math.floor(weather.temp_max) + '&#176';
-    description.innerText = weatherProperty.description.charAt(0).toUpperCase() + weatherProperty.description.slice(1);
+    description.innerText = weatherProperty.description.charAt(0).toUpperCase() + weatherProperty.description.slice(1) + '.';
     windSpeed.innerHTML = 'Wiatr: ' + Math.floor(resultFromOpenWeatherMap.wind.speed) + 'm/s';
     humidity.innerHTML = 'Wilgotność: ' + Math.floor(weather.humidity) + "%";
 
