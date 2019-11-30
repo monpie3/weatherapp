@@ -132,7 +132,7 @@ const init = resultFromOpenWeatherMap => {
     tempMin.innerHTML = Math.floor(weather.temp_min) + '&#176';
     tempMax.innerHTML = Math.floor(weather.temp_max) + '&#176';
     description.innerText = weatherProperty.description.charAt(0).toUpperCase() + weatherProperty.description.slice(1) + '.';
-    windSpeed.innerHTML = 'Wiatr: ' + Math.floor(resultFromOpenWeatherMap.wind.speed) + 'm/s';
-    humidity.innerHTML = 'Wilgotność: ' + Math.floor(weather.humidity) + "%";
+    windSpeed.innerHTML = 'Wiatr: ' + Math.floor(resultFromOpenWeatherMap.wind.speed) + ' m/s';
+    humidity.innerHTML = 'Wilgotność: ' + Math.floor(weather.humidity) + " %";
 
 }

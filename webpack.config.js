@@ -7,6 +7,9 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: "bundle.js"
     },
+    node: {
+        fs: "empty"
+    },
     plugins: [
         new Dotenv({
             path: path.resolve(__dirname, './.env'),
