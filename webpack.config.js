@@ -12,7 +12,7 @@ module.exports = {
     },
     plugins: [
         new Dotenv({
-            path: path.resolve(__dirname, './.env'),
+            path: ('./.env')
         }),
     ]
 }
