@@ -9,14 +9,17 @@
   },
   "devDependencies": {
     "dotenv-webpack": "^1.7.0",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "express": "^4.13.3",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
   },
   "scripts": {
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "prod": "NODE_ENV=production node server.js",
+    "postinstall": "webpack -p",
     "dev": "webpack --mode=development --watch",
     "build": "webpack --mode=production"
   },
-  "heroku-run-build-script": true,
   "keywords": [],
   "author": "",
   "license": "ISC",
