@@ -1,1 +1,1 @@
-web: node server.js
+web: AZURE_MAPS_KEY=$AZURE_MAPS_KEY node server.js
