@@ -13,7 +13,7 @@
     "webpack-cli": "^3.3.10"
   },
   "scripts": {
-    "start": "AZURE_MAPS_KEY=$AZURE_MAPS_KEY node server.js",
+    "start": "web: AZURE_MAPS_KEY=$AZURE_MAPS_KEY node server.js",
     "heroku-postbuild": "webpack -p",
     "dev": "webpack --mode=development --watch",
     "build": "webpack --mode=production"
