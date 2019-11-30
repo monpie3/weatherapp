@@ -1,5 +1,5 @@
 const moment = require('moment');
-require('dotenv').config();
+//require('dotenv').config();
 
 // Replace the subscriptionKey string value with your valid subscription key in .env. or herokuapp
 const azure_maps_key = process.env.AZURE_MAPS_KEY;
