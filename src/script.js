@@ -1,8 +1,14 @@
+const aws = require('aws-sdk');
 const moment = require('moment');
 
-// Replace the subscriptionKey string value with your valid subscription key in .env.
-const azure_maps_key = process.env.AZURE_MAPS_KEY;
-const open_weather_key = process.env.OPEN_WEATHER_KEY;
+// Replace the subscriptionKey string value with your valid subscription key in .env. or herokuapp
+let s3 = new aws.S3({
+    azure_maps_key: process.env.AZURE_MAPS_KEY,
+    open_weather_key: process.env.OPEN_WEATHER_KEY
+  });
+
+const azure_maps_key = s3.config.azure_maps_key;
+const open_weather_key = s3.config.open_weather_key;
 
 moment.locale('pl');
 var myDate = moment().format('LL');
@@ -64,11 +70,12 @@ document.getElementById('search-submit').addEventListener('click', () => {
     let searchCity = document.getElementById('search-input').value;
     if(searchCity){
             let cityName = searchCity.split(",")[0];
+            let countryCode = searchCity.split(",")[1];
             let country = searchCity.split(",")[2];
             let toSearch = '';
             cityName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
             if(country) {
-                toSearch = [cityName ,country].join(", ");
+                toSearch = [cityName, countryCode].join(", ");
                 country= country.charAt(0).toUpperCase() + country.slice(1);
                 document.getElementById('city-name').innerHTML =  `${cityName}, ${country}`; 
             }
