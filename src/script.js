@@ -11,7 +11,6 @@ const moment = require('moment');
 // Replace the subscriptionKey string value with your valid subscription key in .env. or herokuapp
 const azure_maps_key = process.env.AZURE_MAPS_KEY;
 const open_weather_key = process.env.OPEN_WEATHER_KEY;
-console.log(azure_maps_key)
 moment.locale('pl');
 var myDate = moment().format('LL');
 console.log(myDate)
