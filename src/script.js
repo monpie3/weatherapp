@@ -7,8 +7,8 @@ let s3 = new aws.S3({
     open_weather_key: process.env.OPEN_WEATHER_KEY
   });
 
-const azure_maps_key = s3.config.azure_maps_key || AZURE_MAPS_KEY;
-const open_weather_key = s3.config.open_weather_key || OPEN_WEATHER_KEY;
+const azure_maps_key = s3.config.azure_maps_key;
+const open_weather_key = s3.config.open_weather_key;
 
 moment.locale('pl');
 var myDate = moment().format('LL');
