@@ -11,6 +11,6 @@ module.exports = {
         fs: "empty"
     },
     plugins: [
-        new Dotenv(),
+        new Dotenv(path.resolve(__dirname, './.env')),
     ]
 }
