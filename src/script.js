@@ -1,11 +1,6 @@
 const moment = require('moment');
-//const aws = require('aws-sdk');
-require('dotenv').config();
+require('dotenv').config;
 
-// let s3 = new aws.S3({
-//     azure_maps_key: process.env.AZURE_MAPS_KEY,
-//     open_weather_key: process.env.OPEN_WEATHER_KEY,
-// });
 // Replace the subscriptionKey string value with your valid subscription key in .env. or herokuapp
 const azure_maps_key = process.env.AZURE_MAPS_KEY;
 const open_weather_key = process.env.OPEN_WEATHER_KEY;
@@ -14,8 +9,7 @@ const open_weather_key = process.env.OPEN_WEATHER_KEY;
 moment.locale('pl');
 var myDate = moment().format('LL');
 document.getElementById('time').innerHTML='<strong>'+myDate+'</strong>';
-
-document.querySelector('.page-content').style.display = 'none';
+document.querySelector('.weather-description').style.visibility = 'hidden';
 
 var azure_maps_typeahead = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
@@ -62,7 +56,8 @@ const searchWeather = cityName =>
         .then(result => result.json())
         .then(result => init(result))
         .catch(err => {
-                document.getElementById('description-additional').innerText='Nie znaleziono takiego miasta';
+                document.getElementById('description-additional').innerHTML='<img class="unknow" src="./static/photo/unknown.png"> Nie znaleziono takiego miasta';
+                document.body.style.backgroundImage = 'url("./static/photo/default.jpg")';
                 document.getElementById('description-additional').style.display='block';
                 document.querySelector('.weather-description').style.visibility = 'hidden';
                 console.log(err);
@@ -90,6 +85,13 @@ document.getElementById('search-submit').addEventListener('click', () => {
         }
     })
 
+const setIcons = (icon, iconID) => {
+    const skycons = new Skycons({color: '#f2f2f2'});
+    const currentIcon = icon.toUpperCase();
+    skycons.play();
+    return skycons.set(iconID, Skycons[currentIcon]);
+}
+
 const init = resultFromOpenWeatherMap => {
     document.querySelector('.page-content').style.display = 'block';
     switch(resultFromOpenWeatherMap.weather[0].main) {
@@ -110,6 +112,7 @@ const init = resultFromOpenWeatherMap => {
             document.body.style.backgroundImage = 'url("./static/photo/snow.jpg")';
             break;
         case 'Mist':
+        case 'Fog':
             document.body.style.backgroundImage = 'url("./static/photo/mist.png")';
             break;
         default:
@@ -119,7 +122,7 @@ const init = resultFromOpenWeatherMap => {
     document.getElementById('description-additional').style.display = 'none';
     document.querySelector('.weather-description').style.visibility = 'visible';
     //console.log(resultFromOpenWeatherMap)
-    let weatherProperty =  resultFromOpenWeatherMap.weather[0];
+    let weatherProperty = resultFromOpenWeatherMap.weather[0];
     let weather = resultFromOpenWeatherMap.main;
     let temp = document.getElementById('temp');
     let tempMin = document.getElementById('temp-min');
@@ -129,8 +132,8 @@ const init = resultFromOpenWeatherMap => {
     let humidity = document.getElementById('humidity');
     let weatherIcon = document.getElementById('weather-icon');
 
-    
-    weatherIcon.src = 'http://openweathermap.org/img/wn/' + weatherProperty.icon + '.png';
+    setIcons(weatherProperty.main, weatherIcon);
+
     temp.innerHTML = Math.floor(weather.temp) + '&#176';
     tempMin.innerHTML = Math.floor(weather.temp_min) + '&#176';
     tempMax.innerHTML = Math.floor(weather.temp_max) + '&#176';
