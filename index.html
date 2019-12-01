@@ -24,20 +24,19 @@
                 <h1 id="city-name" class="city-name"> </h1>
                 <div id="description-additional" class="description-additional">
                     <img class="unknow" src="./static/photo/unknown.png">
-                    <p>Nie wprowadzono nazwy miasta.</p>
+                    <p>Nie wprowadziłeś/łaś jeszcze nazwy miasta :)</p>
                 </div>
             </div>
             <div class="weather-description">
                 <div class="temp-group row">
-                        <div id="temp" class="temp data col-md-5 col-sm-8 col-xs-12"></div>
-                        <i class="fas fa-thermometer fa-5x col-md-4"></i>
-                        <span class="temp-list-wrapper col-md-3 col-sm-4">
-                            <div class="temp-list">
-                                <div id="temp-min"></div>
-                                <div id="temp-max"></div>
-                            </div>
-                        <span>
-                        
+                    <div id="temp" class="temp data col-md-5 col-sm-8 col-xs-12"></div>
+                    <i class="fas fa-thermometer fa-5x col-md-4"></i>
+                    <span class="temp-list-wrapper col-md-3 col-sm-4">
+                        <div class="temp-list">
+                            <div id="temp-min"></div>
+                            <div id="temp-max"></div>
+                        </div>
+                    <span>      
                 </div>
                 <div class="row">
                     <div class="col description-wind-humidity col-xs-12">
@@ -54,6 +53,29 @@
         </div>
     </main>
 
+    <div class="loader">
+        <div id="load" class="load">
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    <script> 
+        document.querySelector('.page-content').style.display='none';
+        document.querySelector('.navbar').style.visibility='hidden';
+        document.querySelector('.loader').style.display='block';
+        document.body.style.backgroundImage="none"; 
+        document.getElementById('load').classList.add('loader');
+
+        setTimeout(() => {
+            document.getElementById('load').classList.remove('loader');
+            document.querySelector('.page-content').style.display='block';
+            document.querySelector('.navbar').style.visibility='visible';
+            document.querySelector('.loader').style.display='none';
+            document.body.style.backgroundImage='url("./static/photo/default.jpg")'; 
+        }, 1000);
+    </script>
+    
     <!-- scycons -->
     <script src="skycons.js"></script>
     <!-- jquery -->

@@ -25,6 +25,13 @@ body {
     padding: 0;
 }
 
+/* LOADER */
+.loader {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+}
+
 /* NAV */
 .search-container input[type=text] { 
     width: 80%;
@@ -132,8 +139,6 @@ body {
     margin: auto;
 }
 
-
-
 /* FONT */
 .data {
     font-family: 'Roboto Slab', serif;
@@ -156,6 +161,7 @@ body {
 .temp {
     font-size: 7em;
 }
+
 
 
 @media all and (max-width:780px) {
