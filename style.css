@@ -1,3 +1,8 @@
+:root {
+    --custom-black: rgb(15, 1, 1);
+}
+
+
 html {
     box-sizing: border-box;
 }
@@ -20,6 +25,7 @@ body {
     padding: 0;
 }
 
+/* NAV */
 .search-container input[type=text] { 
     width: 80%;
     -webkit-transition: width 0.2s ease-in-out;
@@ -30,13 +36,28 @@ body {
     width: 100%;
 }
 
-.search-container {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        box-shadow: 1px 1px 2px black;
-        z-index: 5;
+.btn {
+    margin-left: 10px;
+    margin-right: 15px;
 }
+
+.form-group {
+    margin-bottom: 0;
+}
+
+.time {
+    margin-left: 10px;
+}
+
+.navbar {
+    position: fixed;
+    background-color: white;
+    top: 0;
+    width: 100%;
+    box-shadow: 1px 1px 2px var(--custom-black);
+    z-index: 5;
+}
+
 
 .tt-menu {
     background-color: white;
@@ -47,7 +68,52 @@ body {
     background-color: lightblue;
 }
 
+/* WEATHER CONTAINER */
+
 .weather-container {
-    margin-top: 40px;
+    margin-top: 60px;
     color: white;
+}
+
+.weather-description {
+    background-color: var(--custom-black);
+    width: 600px;
+}
+
+
+
+
+/* FONT */
+.data {
+    font-family: 'Roboto Slab', serif;
+    color: var(--custom-black);
+}
+
+.content {
+    font-family: Lato, Montserrat, sans-serif;
+}
+
+.timenav strong {
+    letter-spacing: 2px;
+}
+
+
+
+
+@media all and (max-width:750px) {
+    .timenav {
+        display:none;
+    }
+    .search-container input[type=text] { 
+        width: 60vw;
+    }
+    .search-container input[type=text]:focus {
+        width: 60vw;
+    }
+    .btn {
+        width: 15vw;
+    }
+    .row {
+        margin: 0 auto;
+    }
 }

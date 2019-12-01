@@ -1,21 +1,21 @@
 const moment = require('moment');
-const aws = require('aws-sdk');
+//const aws = require('aws-sdk');
 require('dotenv').config();
 
-let s3 = new aws.S3({
-    azure_maps_key: process.env.AZURE_MAPS_KEY,
-    open_weather_key: process.env.OPEN_WEATHER_KEY,
-});
-
-const azure_maps_key = s3.config.azure_maps_key;
-const open_weather_key = s3.config.open_weather_key ;
-
+// let s3 = new aws.S3({
+//     azure_maps_key: process.env.AZURE_MAPS_KEY,
+//     open_weather_key: process.env.OPEN_WEATHER_KEY,
+// });
 // Replace the subscriptionKey string value with your valid subscription key in .env. or herokuapp
-// const azure_maps_key = process.env.AZURE_MAPS_KEY;
-// const open_weather_key = process.env.OPEN_WEATHER_KEY;
+const azure_maps_key = process.env.AZURE_MAPS_KEY;
+const open_weather_key = process.env.OPEN_WEATHER_KEY;
+
+
 moment.locale('pl');
 var myDate = moment().format('LL');
-console.log(myDate)
+document.getElementById('time').innerHTML='<strong>'+myDate+'</strong>';
+
+document.querySelector('.page-content').style.display = 'none';
 
 var azure_maps_typeahead = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
@@ -50,28 +50,27 @@ $('#remote .typeahead').typeahead(
         name: 'azure-maps-typeahead',
         display: 'display',
         source: azure_maps_typeahead
-    }) .on('keyup', this, function (event) {
-            if (event.keyCode == 13) {  // Number 13 is the "Enter" key on the keyboard
-                document.getElementById("search-submit").click();
-            }
-        });
+    }) // Number 13 is the "Enter" key on the keyboard
+    .on('keyup', this, function (event) {
+        if (event.keyCode == 13) document.getElementById("search-submit").click()
+    });
 
 
 const units = 'metric';
-const searchWeather = async cityName =>
-        await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appId=${open_weather_key}&units=${units}&lang=pl`)
-            .then(result => result.json())
-            .then(result => init(result))
-            .catch(err => {
-                    document.getElementById('description-additional').innerText='Nie znaleziono takiego miasta';
-                    document.getElementById('description-additional').style.display='block';
-                    document.querySelector('.weather-description').style.visibility = 'hidden';
-                    console.log(err);
-        })
+const searchWeather = cityName =>
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appId=${open_weather_key}&units=${units}&lang=pl`)
+        .then(result => result.json())
+        .then(result => init(result))
+        .catch(err => {
+                document.getElementById('description-additional').innerText='Nie znaleziono takiego miasta';
+                document.getElementById('description-additional').style.display='block';
+                document.querySelector('.weather-description').style.visibility = 'hidden';
+                console.log(err);
+})
 
 document.getElementById('search-submit').addEventListener('click', () => {
     let searchCity = document.getElementById('search-input').value;
-    if(searchCity){
+    if(searchCity) {
             let cityName = searchCity.split(",")[0];
             let countryCode = searchCity.split(",")[1];
             let country = searchCity.split(",")[2];
@@ -92,6 +91,7 @@ document.getElementById('search-submit').addEventListener('click', () => {
     })
 
 const init = resultFromOpenWeatherMap => {
+    document.querySelector('.page-content').style.display = 'block';
     switch(resultFromOpenWeatherMap.weather[0].main) {
         case 'Clear':
             document.body.style.backgroundImage = 'url("./static/photo/clear.jpg")';
