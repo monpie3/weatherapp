@@ -18,20 +18,31 @@
         </div>
     </nav>
     <main class="page-content container">
-        <div class="weather-container row">
-            <div class='city-name-wrap col-12'> <h1 id="city-name"> </h1> </div>
-            <div id="description-additional"></div>
+        <div class="weather-container">
+            <div class="weather-header">
+                <h1 id="city-name" class="city-name"> </h1>
+                <div id="description-additional" class="description-additional">
+                    <img class="unknow" src="./static/photo/unknown.png">
+                    Nie wprowadzono nazwy miasta.
+                </div>
+            </div>
             <div class="weather-description">
                 <div id="temp"></div>
                 <div id="temp-min"></div>
                 <div id="temp-max"></div>
                 <div id="description"></div>
-                <div><img id="weather-icon"></div>
+                <div class="weather-icon">
+                    <canvas id="weather-icon" width="128" height="128"></canvas>
+                    <div class="weather-icon-default"></div>
+                </div>
                 <div id="wind-speed"></div>
                 <div id="humidity"></div>
             </div>
         </div>
     </main>
+
+    <!-- scycons -->
+    <script src="skycons.js"></script>
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
