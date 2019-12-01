@@ -5,7 +5,6 @@ require('dotenv').config;
 const azure_maps_key = process.env.AZURE_MAPS_KEY;
 const open_weather_key = process.env.OPEN_WEATHER_KEY;
 
-
 moment.locale('pl');
 var myDate = moment().format('LL');
 document.getElementById('time').innerHTML='<strong>'+myDate+'</strong>';
@@ -56,34 +55,33 @@ const searchWeather = cityName =>
         .then(result => result.json())
         .then(result => init(result))
         .catch(err => {
-                document.getElementById('description-additional').innerHTML='<img class="unknow" src="./static/photo/unknown.png"> <p>Nie znaleziono takiego miasta</p>';
-                document.body.style.backgroundImage = 'url("./static/photo/cloud.jpg")';
-                document.getElementById('description-additional').style.display='block';
-                document.querySelector('.weather-description').style.visibility = 'hidden';
-                console.log(err);
+            document.getElementById('description-additional').innerHTML='<img class="unknow" src="./static/photo/unknown.png"> <p>Nie znaleziono takiego miasta</p>';
+            document.body.style.backgroundImage = 'url("./static/photo/cloud.jpg")';
+            document.getElementById('description-additional').style.display='block';
+            document.querySelector('.weather-description').style.visibility = 'hidden';
+            console.log(err);
 })
 
 document.getElementById('search-submit').addEventListener('click', () => {
     let searchCity = document.getElementById('search-input').value;
     if(searchCity) {
-            let cityName = searchCity.split(",")[0];
-            let countryCode = searchCity.split(",")[1];
-            let country = searchCity.split(",")[2];
-            let toSearch = '';
-            cityName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
-            if(country) {
-                toSearch = [cityName, countryCode].join(", ");
-                country= country.charAt(0).toUpperCase() + country.slice(1);
-                document.getElementById('city-name').innerHTML =  `${cityName}, ${country}`; 
-            }
-            else {
-                toSearch = cityName;
-                document.getElementById('city-name').innerHTML = cityName; 
-            }
-            
-            searchWeather(toSearch);
+        let cityName = searchCity.split(",")[0];
+        let countryCode = searchCity.split(",")[1];
+        let country = searchCity.split(",")[2];
+        let toSearch = '';
+        cityName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
+        if(country) {
+            toSearch = [cityName, countryCode].join(", ");
+            country= country.charAt(0).toUpperCase() + country.slice(1);
+            document.getElementById('city-name').innerHTML =  `${cityName}, ${country}`; 
         }
-    })
+        else {
+            toSearch = cityName;
+            document.getElementById('city-name').innerHTML = cityName; 
+        }         
+        searchWeather(toSearch);
+    }
+})
 
 const setIcons = (icon, iconID) => {
     const skycons = new Skycons({color: '#f2f2f2'});
