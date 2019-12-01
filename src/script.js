@@ -56,8 +56,8 @@ const searchWeather = cityName =>
         .then(result => result.json())
         .then(result => init(result))
         .catch(err => {
-                document.getElementById('description-additional').innerHTML='<img class="unknow" src="./static/photo/unknown.png"> Nie znaleziono takiego miasta';
-                document.body.style.backgroundImage = 'url("./static/photo/default.jpg")';
+                document.getElementById('description-additional').innerHTML='<img class="unknow" src="./static/photo/unknown.png"> <p>Nie znaleziono takiego miasta</p>';
+                document.body.style.backgroundImage = 'url("./static/photo/cloud.jpg")';
                 document.getElementById('description-additional').style.display='block';
                 document.querySelector('.weather-description').style.visibility = 'hidden';
                 console.log(err);
@@ -134,9 +134,9 @@ const init = resultFromOpenWeatherMap => {
 
     setIcons(weatherProperty.main, weatherIcon);
 
-    temp.innerHTML = Math.floor(weather.temp) + '&#176';
-    tempMin.innerHTML = Math.floor(weather.temp_min) + '&#176';
-    tempMax.innerHTML = Math.floor(weather.temp_max) + '&#176';
+    temp.innerHTML = Math.floor(weather.temp) + '&#176C';
+    tempMin.innerHTML = 'temp. min: ' + Math.floor(weather.temp_min) + '&#176C';
+    tempMax.innerHTML = 'temp. max: ' + Math.floor(weather.temp_max) + '&#176C';
     description.innerText = weatherProperty.description.charAt(0).toUpperCase() + weatherProperty.description.slice(1) + '.';
     windSpeed.innerHTML = 'Wiatr: ' + Math.floor(resultFromOpenWeatherMap.wind.speed) + ' m/s';
     humidity.innerHTML = 'Wilgotność: ' + Math.floor(weather.humidity) + " %";

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Slab:100" rel="stylesheet"/>
+    <script src="https://kit.fontawesome.com/4d34a12f9d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <title>WeatherApp</title>
@@ -23,20 +24,32 @@
                 <h1 id="city-name" class="city-name"> </h1>
                 <div id="description-additional" class="description-additional">
                     <img class="unknow" src="./static/photo/unknown.png">
-                    Nie wprowadzono nazwy miasta.
+                    <p>Nie wprowadzono nazwy miasta.</p>
                 </div>
             </div>
             <div class="weather-description">
-                <div id="temp"></div>
-                <div id="temp-min"></div>
-                <div id="temp-max"></div>
-                <div id="description"></div>
-                <div class="weather-icon">
-                    <canvas id="weather-icon" width="128" height="128"></canvas>
-                    <div class="weather-icon-default"></div>
+                <div class="temp-group row">
+                        <div id="temp" class="temp data col-md-5 col-sm-8 col-xs-12"></div>
+                        <i class="fas fa-thermometer fa-5x col-md-4"></i>
+                        <span class="temp-list-wrapper col-md-3 col-sm-4">
+                            <div class="temp-list">
+                                <div id="temp-min"></div>
+                                <div id="temp-max"></div>
+                            </div>
+                        <span>
+                        
                 </div>
-                <div id="wind-speed"></div>
-                <div id="humidity"></div>
+                <div class="row">
+                    <div class="col description-wind-humidity col-xs-12">
+                        <em><div id="description"></div></em>
+                        <div id="wind-speed"></div>
+                        <div id="humidity"></div>
+                    </div>
+                    <div class="weather-icon col-6 col-xs-12">
+                        <canvas id="weather-icon" width="140" height="140"></canvas>
+                        <div class="weather-icon-default"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
