@@ -14,10 +14,10 @@
     "webpack-dev-server": "^1.9.0"
   },
   "scripts": {
-    "start": "webpack-dev-server",
     "heroku-postbuild": "webpack -p",
     "dev": "webpack --mode=development --watch",
-    "build": "webpack --mode=production"
+    "build": "webpack --progress --colors",
+    "start": "webpack-dev-server --progress --colors"
   },
   "heroku-run-build-script": true,
   "keywords": [],
