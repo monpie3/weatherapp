@@ -13,7 +13,7 @@
     "webpack-cli": "^3.3.10"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node src/script.js",
     "heroku-postbuild": "webpack -p",
     "dev": "webpack --mode=development --watch",
     "build": "webpack --mode=production"
