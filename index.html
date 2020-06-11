@@ -8,63 +8,51 @@
     <script src="https://kit.fontawesome.com/4d34a12f9d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css"/>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
     <title>WeatherApp</title>
 </head>
 <body>
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <nav class="navbar content">
-                    <div id="time" class="timenav"></div>
-                    <div id="remote"  class="search-container form-group row" align="right">
-                        <input class="typeahead form-control" type="text" id="search-input" size="50px" placeholder="Wpisz nazwę miasta">
-                        <button type="submit" class="btn btn-outline-dark" id="search-submit">Znajdź</button>
-                    </div>
-                </nav>
-                <main class="page-content container">
-                    <div class="weather-container">
-                        <div class="weather-header">
-                            <h1 id="city-name" class="city-name"> </h1>
-                            <div id="description-additional" class="description-additional">
-                                <img class="unknow" src="./static/photo/unknown.png">
-                                <p>Nie wprowadziłeś/łaś jeszcze nazwy miasta :)</p>
-                            </div>
-                        </div>
-                        <div class="weather-description">
-                            <div class="temp-group row">
-                                <div id="temp" class="temp data col-md-5 col-sm-8 col-xs-12"></div>
-                                <i class="fas fa-thermometer fa-5x col-md-3"></i>
-                                <span class="temp-list-wrapper col-md-2 col-sm-4">
-                                    <div class="temp-list">
-                                        <div id="temp-min"></div>
-                                        <div id="temp-max"></div>
-                                    </div>
-                                <span>      
-                            </div>
-                            <div class="second-row row">
-                                <div class="col description-wind-humidity col-xs-12 d-xs-flex">
-                                    <em><div id="description"></div></em>
-                                    <div id="wind-speed"></div>
-                                    <div id="humidity"></div>
-                                </div>
-                                <div class="weather-icon col-6 col-xs-12 d-xs-flex">
-                                    <canvas id="weather-icon" width="140" height="140"></canvas>
-                                    <div class="weather-icon-default"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </main>
+    <nav class="navbar content">
+        <div id="time" class="timenav"></div>
+        <div id="remote"  class="search-container form-group row" align="right">
+            <input class="typeahead form-control" type="text" id="search-input" size="50px" placeholder="Wpisz nazwę miasta">
+            <button type="submit" class="btn btn-outline-dark" id="search-submit">Znajdź</button>
+        </div>
+    </nav>
+    <main class="page-content container">
+        <div class="weather-container">
+            <div class="weather-header">
+                <h1 id="city-name" class="city-name"> </h1>
+                <div id="description-additional" class="description-additional">
+                    <img class="unknow" src="./static/photo/unknown.png">
+                    <p>Nie wprowadziłeś/łaś jeszcze nazwy miasta :)</p>
+                </div>
             </div>
-            <div class="swiper-slide slide2"> 
-                <div class="swiper-text">
-                    <h2> Slide 2</h2>
+            <div class="weather-description">
+                <div class="temp-group row">
+                    <div id="temp" class="temp data col-md-5 col-sm-8 col-xs-12"></div>
+                    <i class="fas fa-thermometer fa-5x col-md-4"></i>
+                    <span class="temp-list-wrapper col-md-3 col-sm-4">
+                        <div class="temp-list">
+                            <div id="temp-min"></div>
+                            <div id="temp-max"></div>
+                        </div>
+                    <span>      
+                </div>
+                <div class="row">
+                    <div class="col description-wind-humidity col-xs-12">
+                        <em><div id="description"></div></em>
+                        <div id="wind-speed"></div>
+                        <div id="humidity"></div>
+                    </div>
+                    <div class="weather-icon col-6 col-xs-12">
+                        <canvas id="weather-icon" width="140" height="140"></canvas>
+                        <div class="weather-icon-default"></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
+
     <div class="loader">
         <div id="load" class="load">
             <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
@@ -85,7 +73,7 @@
             document.querySelector('.navbar').style.visibility='visible';
             document.querySelector('.loader').style.display='none';
             document.body.style.backgroundImage='url("./static/photo/default.jpg")'; 
-        }, 1200);
+        }, 1000);
     </script>
     
     <!-- scycons -->
@@ -97,13 +85,5 @@
     <script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
    
     <script src="dist/bundle.js"></script>
-
-    <!-- Swiper -->
-    <script src="https://unpkg.com/swiper/js/swiper.js"></script>
-    <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
-      <!-- Initialize Swiper -->
-    <script>
-        var swiper = new Swiper('.swiper-container');
-    </script>
 </body>
 </html>

@@ -18,6 +18,9 @@
     "dev": "webpack --mode=development --watch",
     "build": "webpack --mode=production"
   },
+  "browser": {
+    "child_process": false
+  },
   "heroku-run-build-script": true,
   "keywords": [],
   "author": "",

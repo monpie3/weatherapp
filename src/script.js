@@ -51,7 +51,7 @@ $('#remote .typeahead').typeahead(
 
 const units = 'metric';
 const searchWeather = cityName =>
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appId=${open_weather_key}&units=${units}&lang=pl`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appId=${open_weather_key}&units=${units}&lang=pl`)
         .then(result => result.json())
         .then(result => init(result))
         .catch(err => {
