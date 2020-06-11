@@ -1,5 +1,4 @@
 const moment = require('moment');
-const express = require ('express');
 require('dotenv').config;
 
 // Replace the subscriptionKey string value with your valid subscription key in .env. or herokuapp
