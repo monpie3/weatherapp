@@ -139,6 +139,10 @@ body {
     margin: auto;
 }
 
+.fa {
+    margin: auto;
+}
+
 /* FONT */
 .data {
     font-family: 'Roboto Slab', serif;
@@ -183,6 +187,9 @@ body {
     }
     /* CONTAINER */
     .fas {
+        display: none;
+    }
+    .fa {
         display: none;
     }
     .description-wind-humidity {

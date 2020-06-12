@@ -138,5 +138,4 @@ const init = resultFromOpenWeatherMap => {
     description.innerText = weatherProperty.description.charAt(0).toUpperCase() + weatherProperty.description.slice(1) + '.';
     windSpeed.innerHTML = 'Wiatr: ' + Math.floor(resultFromOpenWeatherMap.wind.speed) + ' m/s';
     humidity.innerHTML = 'Wilgotność: ' + Math.floor(weather.humidity) + " %";
-
 }
