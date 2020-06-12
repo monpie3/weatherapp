@@ -24,4 +24,8 @@ module.exports = {
             }
           })
     ]
+    //plugins: [
+        //new Dotenv(path.resolve(__dirname, './.env')),
+    //]
+    //local -> npm run build 
 }

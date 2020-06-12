@@ -110,6 +110,13 @@ const init = resultFromOpenWeatherMap => {
             document.body.style.backgroundImage = 'url("./static/photo/snow.jpg")';
             break;
         case 'Mist':
+        case 'Smoke':
+        case 'Haze':
+        case 'Dust':
+        case 'Sand':
+        case 'Ash':
+        case 'Squall':
+        case 'Tornado':
         case 'Fog':
             document.body.style.backgroundImage = 'url("./static/photo/mist.png")';
             break;
@@ -129,8 +136,12 @@ const init = resultFromOpenWeatherMap => {
     let windSpeed = document.getElementById('wind-speed');
     let humidity = document.getElementById('humidity');
     let weatherIcon = document.getElementById('weather-icon');
+    let iconTemp = document.getElementById('icon-temp');
 
-    setIcons(weatherProperty.main, weatherIcon);
+    setIcons(weatherProperty.main, weatherIcon); 
+    if (weatherProperty.main.toUpperCase()=="HAZE") {
+        setIcons("FOG", weatherIcon); //to agree with skycons
+    }
 
     temp.innerHTML = Math.floor(weather.temp) + '&#176C';
     tempMin.innerHTML = 'temp. min: ' + Math.floor(weather.temp_min) + '&#176C';
@@ -138,4 +149,17 @@ const init = resultFromOpenWeatherMap => {
     description.innerText = weatherProperty.description.charAt(0).toUpperCase() + weatherProperty.description.slice(1) + '.';
     windSpeed.innerHTML = 'Wiatr: ' + Math.floor(resultFromOpenWeatherMap.wind.speed) + ' m/s';
     humidity.innerHTML = 'Wilgotność: ' + Math.floor(weather.humidity) + " %";
+    if (weather.temp > 30) {
+        iconTemp.innerHTML = '<i class="fa fa-thermometer-full fa-5x" aria-hidden="true"></i>';
+    } else if (weather.temp > 20) {
+        iconTemp.innerHTML = '<i class="fa fa-thermometer-three-quarters fa-5x" aria-hidden="true"></i>';
+    } else if (weather.temp > 10) {
+        iconTemp.innerHTML = '<i class="fa fa-thermometer-half fa-5x" aria-hidden="true"></i>';
+    } else if (weather.temp >= 0) {
+        iconTemp.innerHTML = '<i class="fa fa-thermometer-quarter fa-5x" aria-hidden="true"></i>';
+    } else if (weather.temp < 0) {
+        iconTemp.innerHTML = '<i class="fa fa-thermometer-empty fa-5x" aria-hidden="true"></i>';
+    } else {
+        iconTemp.innerHTML = '<i class="fa fa-thermometer-half fa-5x" aria-hidden="true"></i>';
+    }  
 }
