@@ -10,24 +10,11 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
     },
     node: {
-<<<<<<< HEAD
-<<<<<<< HEAD
         child_process: 'empty',
         fs: 'empty',
         crypto: 'empty',
         net: 'empty',
         tls: 'empty'
-=======
-        fs: "empty",
-        net: 'empty',
->>>>>>> 4d30010... working on development 122
-=======
-        child_process: 'empty',
-        fs: 'empty',
-        crypto: 'empty',
-        net: 'empty',
-        tls: 'empty'
->>>>>>> 9c561a0... working on development - 18 webpack
     },
     plugins: [
         new webpack.DefinePlugin({
