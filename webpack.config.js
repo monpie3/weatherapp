@@ -19,10 +19,10 @@ module.exports = {
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {
-               'AZURE_MAPS_KEY': JSON.stringify(process.env.AZURE_MAPS_KEY),
-               'OPEN_WEATHER_KEY': JSON.stringify(process.env.OPEN_WEATHER_KEY),
+                'AZURE_MAPS_KEY': JSON.stringify(process.env.AZURE_MAPS_KEY),
+                'OPEN_WEATHER_KEY': JSON.stringify(process.env.OPEN_WEATHER_KEY),
             }
-          })
+        })
     ]
     //plugins: [
         //new Dotenv(path.resolve(__dirname, './.env')),

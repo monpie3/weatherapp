@@ -59,7 +59,8 @@ const searchWeather = cityName =>
             document.body.style.backgroundImage = 'url("./static/photo/cloud.jpg")';
             document.getElementById('description-additional').style.display='block';
             document.querySelector('.weather-description').style.visibility = 'hidden';
-            console.log(err);
+            console.clear();
+            console.log('Looks like there was a problem: \n',err);
 })
 
 document.getElementById('search-submit').addEventListener('click', () => {
