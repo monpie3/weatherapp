@@ -56,7 +56,7 @@ const searchWeather = cityName =>
         .then(result => init(result))
         .catch(err => {
             document.getElementById('description-additional').innerHTML='<img class="unknow" alt="" src="./static/photo/unknown.png"> <p>Nie znaleziono takiego miasta</p>';
-            document.body.style.backgroundImage = 'url("./static/photo/cloud.jpg")';
+            document.body.style.backgroundImage = 'url("./static/photo/default.jpg")';
             document.getElementById('description-additional').style.display='block';
             document.querySelector('.weather-description').style.visibility = 'hidden';
             console.clear();
