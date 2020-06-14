@@ -74,11 +74,11 @@ document.getElementById('search-submit').addEventListener('click', () => {
         if(country) {
             toSearch = [cityName, countryCode].join(", ");
             country= country.charAt(0).toUpperCase() + country.slice(1);
-            document.getElementById('city-name').innerText =  `${cityName}, ${country}`; 
+            document.getElementById('city-name').innerHTML=  '<h1 class = "highlighted">'.concat(cityName,", ",country,'</h1>') ; 
         }
         else {
             toSearch = cityName;
-            document.getElementById('city-name').innerText = cityName; 
+            document.getElementById('city-name').innerHTML = '<h1 class = "highlighted">'.concat(cityName,'</h1>') ; 
         }         
         searchWeather(toSearch);
     }
