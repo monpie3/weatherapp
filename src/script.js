@@ -55,7 +55,7 @@ const searchWeather = cityName =>
         .then(result => result.json())
         .then(result => init(result))
         .catch(err => {
-            document.getElementById('description-additional').innerHTML='<img class="unknow" src="./static/photo/unknown.png"> <p>Nie znaleziono takiego miasta</p>';
+            document.getElementById('description-additional').innerHTML='<img class="unknow" alt="" src="./static/photo/unknown.png"> <p>Nie znaleziono takiego miasta</p>';
             document.body.style.backgroundImage = 'url("./static/photo/cloud.jpg")';
             document.getElementById('description-additional').style.display='block';
             document.querySelector('.weather-description').style.visibility = 'hidden';
@@ -74,11 +74,11 @@ document.getElementById('search-submit').addEventListener('click', () => {
         if(country) {
             toSearch = [cityName, countryCode].join(", ");
             country= country.charAt(0).toUpperCase() + country.slice(1);
-            document.getElementById('city-name').innerHTML =  `${cityName}, ${country}`; 
+            document.getElementById('city-name').innerText =  `${cityName}, ${country}`; 
         }
         else {
             toSearch = cityName;
-            document.getElementById('city-name').innerHTML = cityName; 
+            document.getElementById('city-name').innerText = cityName; 
         }         
         searchWeather(toSearch);
     }
